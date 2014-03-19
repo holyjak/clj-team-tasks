@@ -12,4 +12,5 @@
                         [ring-mock "0.1.5"]
                         [ring/ring-jetty-adapter "1.2.2"]
                         [ring/ring-devel "1.2.2"]
+                        [org.clojure/tools.namespace "0.2.4"] ;; needed for reloading
                         ]}})
