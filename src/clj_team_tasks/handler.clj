@@ -1,10 +1,16 @@
 (ns clj-team-tasks.handler
   (:use compojure.core)
   (:require [compojure.handler :as handler]
-            [compojure.route :as route]))
+            [compojure.route :as route]
+            [net.cgrand.enlive-html :as html]))
+
+
+(html/deftemplate index-page "templates/index.html" [])
+;;------------------------------------------------------------------------------------------------
 
 (defroutes app-routes
-  (GET "/" [] "Hello World")
+  (GET "/" [] (reduce str (index-page)))
+  (GET "/register" [] "Found")
   (route/resources "/")
   (route/not-found "Not Found"))
 
@@ -19,6 +25,8 @@
   (>sdoc)
 
   (require '[ring.adapter.jetty :as jetty])
-  (defonce server (jetty/run-jetty #'app {:port 8080 :join? false}))
+  (def server (jetty/run-jetty #'app {:port 8080 :join? false}))
+
+  (.stop server)
 
   )
