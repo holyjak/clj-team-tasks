@@ -17,3 +17,7 @@
   (testing "resources"
     (let [response (app (request :get "/dummy.js"))]
       (is (= (:status response) 200)))))
+
+
+
+{+ 1 (- 1) ( * 2 3)}
